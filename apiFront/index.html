@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+        crossorigin="anonymous">
+    <title>Warsztat_4</title>
+</head>
+
+<body>
+    <div class="container">
+        <form>
+            <table>
+                <tr>
+                    <td>Tytuł</td>
+                    <td><input name='title'></td>
+                </tr>
+                <tr>
+                    <td>Autor</td>
+                    <td><input name='author'></td>
+                </tr>
+                <tr>
+                    <td>ISBN</td>
+                    <td><input name='isbn'></td>
+                </tr>
+                <tr>
+                    <td>Publisher</td>
+                    <td><input name='publisher'></td>
+                </tr>
+                <tr>
+                    <td>Rodzaj</td>
+                    <td><input name='type'></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Tytuł</th>
+                    <th scope="col">Autor</th>
+                    <th scope="col">ISBN</th>
+                    <th scope="col">Publisher</th>
+                </tr>
+            </thead>
+            <tbody id="dataContainer">
+            </tbody>
+        </table>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/JavaScript" src="./js/app.js"></script>
+
+</html>

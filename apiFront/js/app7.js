@@ -19,7 +19,7 @@ function singleFetch(action,element){
     var targetLink ="";
     var myInit = "";
     if(action==="load"){
-        targetLink = "http://localhost:8282/books/";
+        targetLink = "http://localhost:8080/Warsztat5/books";
         myInit = {
             method: 'GET',
             mode: 'cors',
@@ -27,10 +27,15 @@ function singleFetch(action,element){
         }
     }else if(action==="delete"){
         var id = element.getAttribute("value");
-        targetLink = "http://localhost:8282/books/remove/"+id;
+        targetLink = "http://localhost:8080/Warsztat5/books/"+id;
+        var myHeaders = new Headers({
+            'content-type': 'aplication/json'
+        });
+        
         myInit = {
             method: 'DELETE',
             mode: 'cors',
+            headers: myHeaders,
             cache: 'default'
         }
     }else if(action==="add"){
@@ -46,7 +51,7 @@ function singleFetch(action,element){
             'Content-Type': 'application/json'
         });
 
-        targetLink = "http://localhost:8282/books/add";
+        targetLink = "http://localhost:8080/Warsztat5/books";
         myInit = {
             method: 'POST',
             headers: myHeaders,
@@ -57,18 +62,20 @@ function singleFetch(action,element){
     }else{
         return;
     }
-
+//singleFetch("load","");
     fetch(targetLink, myInit).then(function(response){
-            response.json().then(function(books){
+        if(action !== "load"){
+            singleFetch("load","");
+        }    
+        response.json().then(function(books){
                 if(action==="load"){
                     addBooksToHtml(books);
                 }
             }).catch(function(){
             });
         }).catch(function(){
-        });
-        
-        
+        });      
+    
 }
 
 //Funkcje
@@ -88,7 +95,6 @@ function eventClick(event){
             singleFetch("add",form[0]);
         }
     });
-    singleFetch("load","");
 }
 
 function addBooksToHtml(books){
@@ -101,6 +107,7 @@ function addBooksToHtml(books){
         var isbn = book.isbn;
         var publisher = book.publisher;
         var bookId = book.id;
+        //var link = '<button class="delete" name="Usuń" value="'+bookId+'">';
         var link = '<a href="" class="delete" value="'+bookId+'">Usuń<a>';
         var newElement = $('<tr><td>'+title+'</td><td>'+author+'</td><td>'+isbn+'</td><td>'+publisher+'</td><td>'+link+'</td></tr>');
         //console.log(newElement);

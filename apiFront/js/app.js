@@ -33,8 +33,10 @@ function eventClick(){
 }
 
 function deleteBook(id){
-    /*$.ajax({
-        url: "http://localhost:8282/books/remove/"+id,
+    
+    /*
+    $.ajax({
+        url: "http://localhost:8282/books/"+id,
         method: 'DELETE',
     }).done(function(books){
     });
@@ -45,16 +47,16 @@ function deleteBook(id){
         cache: 'default'
     }
 
-    fetch("http://localhost:8282/books/remove/"+id, myInit).then(function(response){
+    fetch("http://localhost:8080/Warsztat5/books/"+id, myInit)//.then(function(response){
         //console.log("hey");
-    }).catch(function(){
+    //}).catch(function(){
         //console.log("jo");
-    });
+    //});
 }
 
 function loadBooks(){
     $.ajax({
-        url: "http://localhost:8282/books/",
+        url: "http://localhost:8080/Warsztat5/books/",
     }).done(function(books){
         addBooksToHtml(books);
     });
